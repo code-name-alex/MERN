@@ -25,5 +25,22 @@ class Ninja{
 
 }
 
+class Sensei extends Ninja{
+
+constructor(nameInput, healthInput){
+    super(nameInput, healthInput);
+    this.speed = 10;
+    this.strength = 10;
+    this.wisdom = 10;
+}
+
+    speakWisdom(){
+        console.log("I speaketh wisdom!");
+    }
+
+}
+
 let bob = new Ninja("Bob", 100);
-bob.showStats();
+let jedi = new Sensei("Jedi", 100);
+
+jedi.speakWisdom();
