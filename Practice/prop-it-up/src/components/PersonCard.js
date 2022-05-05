@@ -6,7 +6,10 @@ class Personcard extends Component {
             <div>
                 <h1>{this.props.lastName}, {this.props.firstName}</h1>
                 Age: {this.props.age}<br />
-                Hair Color: {this.props.hairColor}
+                Hair Color: {this.props.hairColor} <br />
+
+                <button onClick={() => this.props.increaseAge()}>Birthday Button</button>
+
             </div>
         )
     }
