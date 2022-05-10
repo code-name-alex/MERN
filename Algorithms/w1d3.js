@@ -48,6 +48,30 @@ const expectedMerge4 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  */
 function merge(arr1, arr2) {
     let result = [];
+    let smallerArr = arr1;
+    let largerArr = arr2;
+
+    if (arr2.length < arr1.length){
+        smallerArr = arr2;
+        largerArr = arr1;
+    }
+
+    let j = 0;
+
+    for (let i = 0; i < largerArr.length; i++){
+        while(smallerArr[j] < largerArr[i] && j < smallerArr.length){
+            result.push(smallerArr[j]);
+            j++;
+        }
+        result.push(largerArr[i]);
+    }
+
+    while(j < smallerArr.length){
+        result.push(smallerArr[j]);
+        j++;
+    }
+
+    return result;
 }
 
 // mergeSort
@@ -65,4 +89,12 @@ const expectedSort = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  * @param {Array<number>} nums
  * @returns {Array<number>} A New sorted array.
  */
-function mergeSort(nums) {}
+function mergeSort(nums) {
+    if(nums.length == 1){
+        return nums;
+    }
+
+    let splitIndex = Math.floor(nums.length/2);
+
+    return merge(mergeSort(nums.slice(0,splitIndex)), mergeSort(nums.slice(splitIndex,nums.length)));
+}
