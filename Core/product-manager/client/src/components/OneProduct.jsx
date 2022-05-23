@@ -13,7 +13,7 @@ const OneProduct = () => {
         axios.get(`http://localhost:8000/api/products/${_id}`)
     
             .then(res => {
-                console.log(res);
+                console.log(res.data);
                 setProductInfo(res.data.results);
             })
             .catch(err => console.log(err));
